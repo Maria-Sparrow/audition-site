@@ -14,7 +14,7 @@ const Blog = () => {
     updateArticles();
   }, [])
   return (
-    <div>
+    <div className='box-padding'>
       <h1>Блог</h1>
 
       <section className="articles">
