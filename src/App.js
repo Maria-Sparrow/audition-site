@@ -7,7 +7,6 @@ import OurServices from './components/OurServices/OurServices';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
 
-
 function App() {
   return (
     <BrowserRouter>
@@ -19,7 +18,7 @@ function App() {
             <Route path="/" element={<AboutUs />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/services" element={<OurServices />} />
-            <Route path="/contact" element={<Blog />} />
+            <Route path="/blog" element={<Blog />} />
           </Routes>
         </main>
         <Footer />

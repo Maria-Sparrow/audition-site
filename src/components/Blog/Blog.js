@@ -1,32 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Blog/Blog.css'
+import { getArticles } from '../../api-requests/api';
 
 
 const Blog = () => {
-  const articles = [
-    {
-      title: "Забезпечення безпеки даних в інформаційній системі аудиторської компанії",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVDCYP4vRI1kTJLGt_Y0lCJPIPVhxmQE14Bw&usqp=CAU",
-    },
-    {
-      title: "Як використовувати інформаційну систему для аналізу та звітування результатів аудиту",
-      image: "https://i.pinimg.com/474x/5b/c9/2d/5bc92dfc200766bb913023576d270fc4.jpg",
-    },
-    {
-      title: "Роль інформаційної системи в аудиторській компанії: переваги та виклики",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5D6D1lBVg7Q5Yy7ckAUCSYTLm5vIffGiCqg&usqp=CAU",
-    },
-  ];
+  const [articles, changeArticles] = useState([]);
 
+  useEffect(() => {
+    const updateArticles = async () => {
+      const articlesFromAPI = await getArticles();
+      changeArticles(articlesFromAPI.data);
+    }
+    updateArticles();
+  }, [])
   return (
     <div>
       <h1>Блог</h1>
 
       <section className="articles">
-        {articles.map(({ title, image }, index) => (
+        {articles.map(({ text, img_link }, index) => (
           <a href="/" key={index}>
-            <img src={image} alt={title} />
-            <h2>{title}</h2>
+            <img src={img_link} alt={text} />
+            <h2>{text}</h2>
           </a>
         ))}
       </section>
