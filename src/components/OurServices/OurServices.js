@@ -93,7 +93,7 @@ const OurServices = () => {
       <ul>
         {services.map((service) => (
           <li key={service.id}>
-            <h3>{service.title}</h3>
+            <h3>{service.name}</h3>
             <p>{service.description}</p>
           </li>
         ))}
